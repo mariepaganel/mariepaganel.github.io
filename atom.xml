@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Всё устроится математически</title>
+  
+  <subtitle>Наблюдать и работать</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://mariepaganel.github.io/"/>
+  <updated>2018-04-14T12:56:00.485Z</updated>
+  <id>http://mariepaganel.github.io/</id>
+  
+  <author>
+    <name>Мария Керсонова</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Первый пост</title>
+    <link href="http://mariepaganel.github.io/2018/04/first-post/"/>
+    <id>http://mariepaganel.github.io/2018/04/first-post/</id>
+    <published>2018-04-13T23:18:43.000Z</published>
+    <updated>2018-04-14T12:56:00.485Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="left half-width"><br>  <img src="/images/typewriter.jpg" alt="Новый блог! so exciting!"><br></figure><p>Я создала новый блог, ура! Поскольку некоторые платформы, на которых я пытаюсь вести блоги, в последнее время то и дело оказываются под угрозой закрытия или блокировки, мне остаётся только завести ещё один блог!<br>Этот блог совершенно открытый и, вероятно, будет посвящён в основном вещам техническим, связанным с работой и личными открытиями. И, конечно, для Верна место найдётся! За личными постами, которые открываются только для друзей, придётся заходить в другие мои блоги. Я постараюсь их не забрасывать.<br><a id="more"></a></p><h3 id="Кто-я"><a href="#Кто-я" class="headerlink" title="Кто я"></a>Кто я</h3><p>Я решила для этого блога не скрывать свою фамилию. Но чаще я использую никнейм <em>Marie Paganel</em> или <em>Мари Паганель</em> – в честь одного из любимых литературных героев.<br>Я начинающий разработчик на php и начинающий DevOps в одной маленькой и тоже во многом начинающей конторе. Эта новая работа меня и вдохновила начать новый блог. Я хочу развиваться и изучать новое! Здесь, конечно, будут полезные заметки на этом пути.<br>Ещё я жюль-вернистка. Это значит, что я изучаю жизнь и творчество писателя Жюля Верна, участвую в мероприятиях, ему посвящённых (случается, даже организовываю), пишу о нём статьи и просто постоянно читаю его и сообщаю всем, что ещё нового вычитала. Список самых важных или интересных (или напечатанных) моих статей появится на странице About/Обо мне.<br>Я администратор группы <a href="http://vk.com/j_vern" target="_blank" rel="noopener">Произведения Жюля Верна</a>, если вы ещё не знаете о ней – скорее подпишитесь! Ещё в социальной сети ВКонтакте я веду группу <a href="http://vk.com/read_write" target="_blank" rel="noopener">Читательский дневник</a>, где с большим удовольствием провожу “Книжные фанты” – игру, где каждую неделю можно задать кому-то и получить для себя случайную книгу для чтения.<br>Я, случается, пишу фанфикшен (по книгам Верна и не только), и в основном он собран в моём долгоживущем <a href="http://mariepaganel.diary.ru" target="_blank" rel="noopener">блоге на diary.ru</a>. Там же появляются личные посты, открытые только для постоянных читателей (подписка бесплатно, нужно только зарегистрироваться).</p><p>Должно быть, первые читатели этого блога – мои друзья и подписчики с других ресурсов. Привет вам всем! Если хотите, напишите приветственный комментарий, мне будет очень приятно!</p><h3 id="Благодарности"><a href="#Благодарности" class="headerlink" title="Благодарности"></a>Благодарности</h3><p>Этот блог потребовал немного больше работы, чем прежние. Я освоила <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>, что, впрочем, несложно, и научилась публиковать статичные веб-сайты на <a href="http://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>. Мне помогли курсы <a href="https://app.pluralsight.com/library/courses/static-site-generator-build-better-blog" target="_blank" rel="noopener">“Build a Better Blog with a Static Site Generator”</a> и <a href="https://thegymnasium.com/courses/GYM/107/0/about" target="_blank" rel="noopener">“Modern Web Design”</a>.<br>Фотография-баннер сделана by Jessica Lewis, <a href="https://www.pexels.com/photo/red-fruits-on-table-699380/" target="_blank" rel="noopener">я взяла это фото с сайта Pexels</a>.</p><h3 id="Добро-пожаловать"><a href="#Добро-пожаловать" class="headerlink" title="Добро пожаловать!"></a>Добро пожаловать!</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;left half-width&quot;&gt;&lt;br&gt;  &lt;img src=&quot;/images/typewriter.jpg&quot; alt=&quot;Новый блог! so exciting!&quot;&gt;&lt;br&gt;&lt;/figure&gt;
+
+&lt;p&gt;Я создала новый блог, ура! Поскольку некоторые платформы, на которых я пытаюсь вести блоги, в последнее время то и дело оказываются под угрозой закрытия или блокировки, мне остаётся только завести ещё один блог!&lt;br&gt;Этот блог совершенно открытый и, вероятно, будет посвящён в основном вещам техническим, связанным с работой и личными открытиями. И, конечно, для Верна место найдётся! За личными постами, которые открываются только для друзей, придётся заходить в другие мои блоги. Я постараюсь их не забрасывать.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="День за днём" scheme="http://mariepaganel.github.io/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/"/>
+    
+    
+      <category term="блог" scheme="http://mariepaganel.github.io/tags/%D0%B1%D0%BB%D0%BE%D0%B3/"/>
+    
+      <category term="hexo" scheme="http://mariepaganel.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
