@@ -18,15 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>Всё устроится математически</title>
+  <title>Перенаправление виртуального хоста для nginx-proxy в Docker | Всё устроится математически</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Всё устроится математически">
-<meta property="og:url" content="http://mariepaganel.github.io/index.html">
+  <meta name="description" content="По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется автоматический обратный">
+<meta name="keywords" content="Docker,nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Перенаправление виртуального хоста для nginx-proxy в Docker">
+<meta property="og:url" content="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/index.html">
 <meta property="og:site_name" content="Всё устроится математически">
+<meta property="og:description" content="По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется автоматический обратный">
 <meta property="og:locale" content="ru">
+<meta property="og:updated_time" content="2018-04-16T12:00:13.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Всё устроится математически">
+<meta name="twitter:title" content="Перенаправление виртуального хоста для nginx-proxy в Docker">
+<meta name="twitter:description" content="По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется автоматический обратный">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -80,9 +85,7 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-nginx-docker-redirect" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-nginx-docker-redirect" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/nginx-docker-redirect/" class="article-date">
   <time datetime="2018-04-16T10:19:08.000Z" itemprop="datePublished">2018-04-16</time>
@@ -99,8 +102,8 @@ ga('send', 'pageview');
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/nginx-docker-redirect/">Перенаправление виртуального хоста для nginx-proxy в Docker</a>
+    <h1 class="article-title" itemprop="name">
+      Перенаправление виртуального хоста для nginx-proxy в Docker
     </h1>
   
 
@@ -111,11 +114,14 @@ ga('send', 'pageview');
         <p>По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется <a href="https://hub.docker.com/r/jwilder/nginx-proxy/" target="_blank" rel="noopener">автоматический обратный прокси-сервер nginx от jwilder</a>.<br>Решение кажется очевидным и простым (и, вероятно, грубым), но я определённо рада, что нашла хоть такое. Основное преимущество: <strong>настройки в отдельном файле для каждого сайта</strong>, что делает проще автоматизацию перенаправления.</p>
 <p>Для этого при создании контейнера с nginx нужно прописать дополнительные тома для настроек: conf.d для общих настроек и vhost.d, где будут храниться файлы для каждого виртуального хоста.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 80:80 -p 443:443 \</span><br><span class="line">  -v /path/to/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \</span><br><span class="line">  jwilder/nginx-proxy</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/nginx-docker-redirect/#more">Читать дальше</a>
-          </p>
-        
+<a id="more"></a>
+<p>Или, если nginx-контейнер запускаем с помощью docker-compose (version: ‘2’), добавить строчки<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">./conf.d:/etc/nginx/conf.d</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">./vhost.d:/etc/nginx/vhost.d:ro</span></span><br></pre></td></tr></table></figure></p>
+<p>Перед созданием контейнера с сайтом в папку vhost.d поместить файл с названием, которое соответствует нашему сайту с добавлением “_location”. В него нужно записать только одну строчку “proxy_pass http://ваш.адрес;”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'proxy_pass http://example.com;'</span> &gt; /path/to/vhost.d/example.com_location</span><br></pre></td></tr></table></figure>
+<p>Далее как при обычном запуске контейнера с обратным прокси от jwilder с помощью docker run или docker-compose в переменную среды VITRUAL_HOST вписать “example.com”.<br>Если не редактировали файл nginx.tmpl, то при перезапуске контейнера nginx он кроме прочих автоматически добавит в /path/to/conf.d/default.conf строчки<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://example.com;</span><br><span class="line">include /etc/nginx/vhost.d/example.com_location;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Для решения задачи нужно удалить первую строчку и оставить вторую.</strong><br>Или заранее удалить строчку в nginx.tmpl, тогда он просто не станет её создавать (ни для одного контейнера не станет создавать, всегда придётся создавать файл “адрес.com_location”!).</p>
+<p>Теперь файл example.com_location можно легко редактировать, в том числе автоматически: нужно найти конкретный файл, изменить его содержимое (на “proxy_pass куда-перенаправлять;”) и сделать nginx reload. Если дойдём до автоматизации, напишу об этом после.<br>Замечание: если сайт доступен по нескольким адресам – например, <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> и example.com, – используйте символические ссылки.</p>
+
       
     </div>
     <footer class="article-footer">
@@ -129,64 +135,26 @@ ga('send', 'pageview');
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/first-post/" class="article-date">
-  <time datetime="2018-04-13T23:18:43.000Z" itemprop="datePublished">2018-04-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/День-за-днём/">День за днём</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/first-post/">Первый пост</a>
-    </h1>
+    <a href="/2018/04/first-post/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Предыдущий</strong>
+      <div class="article-nav-title">Первый пост</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="left half-width"><br>  <img src="/images/typewriter.jpg" alt="Новый блог! so exciting!"><br></figure>
-
-<p>Я создала новый блог, ура! Поскольку некоторые платформы, на которых я пытаюсь вести блоги, в последнее время то и дело оказываются под угрозой закрытия или блокировки, мне остаётся только завести ещё один блог!<br>Этот блог совершенно открытый и, вероятно, будет посвящён в основном вещам техническим, связанным с работой и личными открытиями. И, конечно, для Верна место найдётся! За личными постами, которые открываются только для друзей, придётся заходить в другие мои блоги. Я постараюсь их не забрасывать.<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/first-post/#more">Читать дальше</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://mariepaganel.github.io/2018/04/first-post/" data-id="cjg27179u0000t2xcvrbggncj" class="article-share-link">Поделиться</a>
-      
-        <a href="http://mariepaganel.github.io/2018/04/first-post/#disqus_thread" class="article-comment-link">Комментарии</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/блог/">блог</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-
-  
-
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 
 </section>
         
@@ -274,11 +242,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'mariepaganel';
   
+  var disqus_url = 'http://mariepaganel.github.io/2018/04/nginx-docker-redirect/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

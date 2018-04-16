@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mariepaganel.github.io/"/>
-  <updated>2018-04-14T12:56:00.485Z</updated>
+  <updated>2018-04-16T12:00:13.426Z</updated>
   <id>http://mariepaganel.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Перенаправление виртуального хоста для nginx-proxy в Docker</title>
+    <link href="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/"/>
+    <id>http://mariepaganel.github.io/2018/04/nginx-docker-redirect/</id>
+    <published>2018-04-16T10:19:08.000Z</published>
+    <updated>2018-04-16T12:00:13.426Z</updated>
+    
+    <content type="html"><![CDATA[<p>По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется <a href="https://hub.docker.com/r/jwilder/nginx-proxy/" target="_blank" rel="noopener">автоматический обратный прокси-сервер nginx от jwilder</a>.<br>Решение кажется очевидным и простым (и, вероятно, грубым), но я определённо рада, что нашла хоть такое. Основное преимущество: <strong>настройки в отдельном файле для каждого сайта</strong>, что делает проще автоматизацию перенаправления.</p><p>Для этого при создании контейнера с nginx нужно прописать дополнительные тома для настроек: conf.d для общих настроек и vhost.d, где будут храниться файлы для каждого виртуального хоста.</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 80:80 -p 443:443 \</span><br><span class="line">  -v /path/to/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \</span><br><span class="line">  jwilder/nginx-proxy</span><br></pre></td></tr></table></figure><a id="more"></a><p>Или, если nginx-контейнер запускаем с помощью docker-compose (version: ‘2’), добавить строчки<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">./conf.d:/etc/nginx/conf.d</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">./vhost.d:/etc/nginx/vhost.d:ro</span></span><br></pre></td></tr></table></figure></p><p>Перед созданием контейнера с сайтом в папку vhost.d поместить файл с названием, которое соответствует нашему сайту с добавлением “_location”. В него нужно записать только одну строчку “proxy_pass http://ваш.адрес;”</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'proxy_pass http://example.com;'</span> &gt; /path/to/vhost.d/example.com_location</span><br></pre></td></tr></table></figure><p>Далее как при обычном запуске контейнера с обратным прокси от jwilder с помощью docker run или docker-compose в переменную среды VITRUAL_HOST вписать “example.com”.<br>Если не редактировали файл nginx.tmpl, то при перезапуске контейнера nginx он кроме прочих автоматически добавит в /path/to/conf.d/default.conf строчки<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">proxy_pass http://example.com;</span><br><span class="line">include /etc/nginx/vhost.d/example.com_location;</span><br></pre></td></tr></table></figure></p><p><strong>Для решения задачи нужно удалить первую строчку и оставить вторую.</strong><br>Или заранее удалить строчку в nginx.tmpl, тогда он просто не станет её создавать (ни для одного контейнера не станет создавать, всегда придётся создавать файл “адрес.com_location”!).</p><p>Теперь файл example.com_location можно легко редактировать, в том числе автоматически: нужно найти конкретный файл, изменить его содержимое (на “proxy_pass куда-перенаправлять;”) и сделать nginx reload. Если дойдём до автоматизации, напишу об этом после.<br>Замечание: если сайт доступен по нескольким адресам – например, <a href="http://www.example.com" target="_blank" rel="noopener">www.example.com</a> и example.com, – используйте символические ссылки.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется &lt;a href=&quot;https://hub.docker.com/r/jwilder/nginx-proxy/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;автоматический обратный прокси-сервер nginx от jwilder&lt;/a&gt;.&lt;br&gt;Решение кажется очевидным и простым (и, вероятно, грубым), но я определённо рада, что нашла хоть такое. Основное преимущество: &lt;strong&gt;настройки в отдельном файле для каждого сайта&lt;/strong&gt;, что делает проще автоматизацию перенаправления.&lt;/p&gt;
+&lt;p&gt;Для этого при создании контейнера с nginx нужно прописать дополнительные тома для настроек: conf.d для общих настроек и vhost.d, где будут храниться файлы для каждого виртуального хоста.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ docker run -d -p 80:80 -p 443:443 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v /path/to/conf.d:/etc/nginx/conf.d \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  jwilder/nginx-proxy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Работа" scheme="http://mariepaganel.github.io/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/"/>
+    
+    
+      <category term="Docker" scheme="http://mariepaganel.github.io/tags/Docker/"/>
+    
+      <category term="nginx" scheme="http://mariepaganel.github.io/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>Первый пост</title>
