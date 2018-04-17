@@ -110,7 +110,7 @@ ga('send', 'pageview');
       
         <p>По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется <a href="https://hub.docker.com/r/jwilder/nginx-proxy/" target="_blank" rel="noopener">автоматический обратный прокси-сервер nginx от jwilder</a>.<br>Решение кажется очевидным и простым (и, вероятно, грубым), но я определённо рада, что нашла хоть такое. Основное преимущество: <strong>настройки в отдельном файле для каждого сайта</strong>, что делает проще автоматизацию перенаправления.</p>
 <p>Для этого при создании контейнера с nginx нужно прописать дополнительные тома для настроек: conf.d для общих настроек и vhost.d, где будут храниться файлы для каждого виртуального хоста.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 80:80 -p 443:443 \</span><br><span class="line">  -v /path/to/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \</span><br><span class="line">  jwilder/nginx-proxy</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 80:80 -p 443:443 \</span><br><span class="line">  --name nginx \</span><br><span class="line">  -v /path/to/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \</span><br><span class="line">  jwilder/nginx-proxy</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2018/04/nginx-docker-redirect/#more">Читать дальше</a>
@@ -119,7 +119,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/" data-id="cjg2717a40001t2xcrb9i1qu2" class="article-share-link">Поделиться</a>
+      <a data-url="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/" data-id="cjg3va7cs0000xvxchpf7mwdc" class="article-share-link">Поделиться</a>
       
         <a href="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -171,7 +171,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mariepaganel.github.io/2018/04/first-post/" data-id="cjg27179u0000t2xcvrbggncj" class="article-share-link">Поделиться</a>
+      <a data-url="http://mariepaganel.github.io/2018/04/first-post/" data-id="cjg3va7d20001xvxc7d5vx5aw" class="article-share-link">Поделиться</a>
       
         <a href="http://mariepaganel.github.io/2018/04/first-post/#disqus_thread" class="article-comment-link">Комментарии</a>
       
