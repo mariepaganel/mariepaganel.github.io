@@ -18,15 +18,20 @@ ga('send', 'pageview');
 
 
   
-  <title>Всё устроится математически</title>
+  <title>Доступ к базе данных в docker-compose | Всё устроится математически</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Всё устроится математически">
-<meta property="og:url" content="http://mariepaganel.github.io/index.html">
+  <meta name="description" content="Это была очень глупая и очень неприятная проблема, поэтому я обязана это записать, чтобы не повторять ошибку!Задача: иметь доступ к контейнеру с базой из контейнера с php-приложением. Допустим, у нас">
+<meta name="keywords" content="Docker,MySQL,Symfony">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Доступ к базе данных в docker-compose">
+<meta property="og:url" content="http://mariepaganel.github.io/2018/04/docker-compose-db-path/index.html">
 <meta property="og:site_name" content="Всё устроится математически">
+<meta property="og:description" content="Это была очень глупая и очень неприятная проблема, поэтому я обязана это записать, чтобы не повторять ошибку!Задача: иметь доступ к контейнеру с базой из контейнера с php-приложением. Допустим, у нас">
 <meta property="og:locale" content="ru">
+<meta property="og:updated_time" content="2018-04-22T11:08:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Всё устроится математически">
+<meta name="twitter:title" content="Доступ к базе данных в docker-compose">
+<meta name="twitter:description" content="Это была очень глупая и очень неприятная проблема, поэтому я обязана это записать, чтобы не повторять ошибку!Задача: иметь доступ к контейнеру с базой из контейнера с php-приложением. Допустим, у нас">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -80,9 +85,7 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-docker-compose-db-path" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-docker-compose-db-path" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/docker-compose-db-path/" class="article-date">
   <time datetime="2018-04-22T11:08:18.000Z" itemprop="datePublished">2018-04-22</time>
@@ -99,8 +102,8 @@ ga('send', 'pageview');
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/docker-compose-db-path/">Доступ к базе данных в docker-compose</a>
+    <h1 class="article-title" itemprop="name">
+      Доступ к базе данных в docker-compose
     </h1>
   
 
@@ -110,11 +113,12 @@ ga('send', 'pageview');
       
         <p><em>Это была очень глупая и очень неприятная проблема, поэтому я обязана это записать, чтобы не повторять ошибку!</em><br>Задача: иметь доступ к контейнеру с базой из контейнера с php-приложением.</p>
 <p>Допустим, у нас есть файл docker-compose.yml (пример сгенерировала в <a href="https://phpdocker.io/" target="_blank" rel="noopener">phpdocker.io</a>):<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3.1"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    mysql:</span></span><br><span class="line"><span class="attr">      image:</span> <span class="attr">mysql:5.7</span></span><br><span class="line"><span class="attr">      container_name:</span> <span class="string">my-project-mysql</span></span><br><span class="line"><span class="attr">      working_dir:</span> <span class="string">/application</span></span><br><span class="line"><span class="attr">      volumes:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">.:/application</span></span><br><span class="line"><span class="attr">      environment:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_ROOT_PASSWORD=root-password</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_DATABASE=my-database</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_USER=my-user</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">MYSQL_PASSWORD=my-password</span></span><br><span class="line"><span class="attr">      ports:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">"8082:3306"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    webserver:</span></span><br><span class="line">      <span class="string">&lt;...&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">    php-fpm:</span></span><br><span class="line">      <span class="string">&lt;...&gt;</span></span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/docker-compose-db-path/#more">Читать дальше</a>
-          </p>
-        
+<a id="more"></a>
+<p>Мы добросовестно запускаем<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker-compose up</span><br></pre></td></tr></table></figure></p>
+<p>и хотим получить для своего приложения доступ к базе MySQL, запущенной в этом контейнере.<br>Для того, чтобы подключиться к базе вне контейнера, можно использовать хост:порт 127.0.0.1:8082.<br>И вот тут я запуталась и посчитала, что и из контейнера php-fpm мы доступ к базе получим через тот же адрес. <em>Неверно!</em><br>Docker-compose при запуске создаёт внутреннюю сеть, в которой сервисы обращаются друг к другу по именам. По именам сервисов, не контейнеров. В нашем случае, адрес базы данных просто “mysql” со стандартным портом.</p>
+<p>Так что подключать базу нужно как-то так:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mysqli = <span class="keyword">new</span> mysqli(<span class="string">"mysql"</span>, <span class="string">"my-user"</span>, <span class="string">"my-password"</span>, <span class="string">"my-database"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Или, в моём случае, прописывать в файле .env для Symfony 4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DATABASE_URL=mysql://my-user:my-password@mysql:3306/my-database</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
@@ -128,116 +132,26 @@ ga('send', 'pageview');
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-nginx-docker-redirect" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/nginx-docker-redirect/" class="article-date">
-  <time datetime="2018-04-16T10:19:08.000Z" itemprop="datePublished">2018-04-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Работа/">Работа</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/nginx-docker-redirect/">Перенаправление виртуального хоста для nginx-proxy в Docker</a>
-    </h1>
+    <a href="/2018/04/nginx-docker-redirect/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Предыдущий</strong>
+      <div class="article-nav-title">Перенаправление виртуального хоста для nginx-proxy в Docker</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>По работе потребовалось: на некоторый период времени перенаправлять запросы на другой сайт (отправлять клиентов, которые не платят за услугу, на страницу оплаты). Используется <a href="https://hub.docker.com/r/jwilder/nginx-proxy/" target="_blank" rel="noopener">автоматический обратный прокси-сервер nginx от jwilder</a>.<br>Решение кажется очевидным и простым (и, вероятно, грубым), но я определённо рада, что нашла хоть такое. Основное преимущество: <strong>настройки в отдельном файле для каждого сайта</strong>, что делает проще автоматизацию перенаправления.</p>
-<p>Для этого при создании контейнера с nginx нужно прописать дополнительные тома для настроек: conf.d для общих настроек и vhost.d, где будут храниться файлы для каждого виртуального хоста.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 80:80 -p 443:443 \</span><br><span class="line">  --name nginx \</span><br><span class="line">  -v /path/to/conf.d:/etc/nginx/conf.d \</span><br><span class="line">  -v /path/to/vhost.d:/etc/nginx/vhost.d:ro \</span><br><span class="line">  jwilder/nginx-proxy</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/nginx-docker-redirect/#more">Читать дальше</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/" data-id="cjgapm7au0001ydoiklftklq6" class="article-share-link">Поделиться</a>
-      
-        <a href="http://mariepaganel.github.io/2018/04/nginx-docker-redirect/#disqus_thread" class="article-comment-link">Комментарии</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-
-  
-    <article id="post-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/first-post/" class="article-date">
-  <time datetime="2018-04-13T23:18:43.000Z" itemprop="datePublished">2018-04-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/День-за-днём/">День за днём</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/first-post/">Первый пост</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="left half-width"><br>  <img src="/images/typewriter.jpg" alt="Новый блог! so exciting!"><br></figure>
-
-<p>Я создала новый блог, ура! Поскольку некоторые платформы, на которых я пытаюсь вести блоги, в последнее время то и дело оказываются под угрозой закрытия или блокировки, мне остаётся только завести ещё один блог!<br>Этот блог совершенно открытый и, вероятно, будет посвящён в основном вещам техническим, связанным с работой и личными открытиями. И, конечно, для Верна место найдётся! За личными постами, которые открываются только для друзей, придётся заходить в другие мои блоги. Я постараюсь их не забрасывать.<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/04/first-post/#more">Читать дальше</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://mariepaganel.github.io/2018/04/first-post/" data-id="cjgapm7b60004ydoi72ijmu3k" class="article-share-link">Поделиться</a>
-      
-        <a href="http://mariepaganel.github.io/2018/04/first-post/#disqus_thread" class="article-comment-link">Комментарии</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/блог/">блог</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+</section>
 
 </section>
         
@@ -329,11 +243,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'mariepaganel';
   
+  var disqus_url = 'http://mariepaganel.github.io/2018/04/docker-compose-db-path/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
