@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117517728-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Приключения с SSL | Всё устроится математически</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
+<meta name="keywords" content="заметки,Docker,nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Приключения с SSL">
+<meta property="og:url" content="http://mariepaganel.github.io/2018/05/ssl-adventures/index.html">
+<meta property="og:site_name" content="Всё устроится математически">
+<meta property="og:description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
+<meta property="og:locale" content="ru">
+<meta property="og:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
+<meta property="og:updated_time" content="2018-05-31T12:10:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Приключения с SSL">
+<meta name="twitter:description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner">
+    <img src="/css/images/banner.jpeg" style="display:none;" alt=""/>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Всё устроится математически</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Наблюдать и работать</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://mariepaganel.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ssl-adventures" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/ssl-adventures/" class="article-date">
+  <time datetime="2018-05-31T12:10:51.000Z" itemprop="datePublished">2018-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Работа/">Работа</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Приключения с SSL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.<br>Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог размещён) прямо <em>в начале этого мая</em> начали поддерживать ssl-сертификаты и перенаправление на https для других доменов. Когда я создавала блог, поддерживали только для собственных, поэтому когда я перешла на свой домен (хорошо иметь редкую фамилию))), то сначала оставалась без безопасности.<br>Чтобы получить перенаправление на https, нужно было просто убрать из настроек custom domain и после добавить назад. Сделала это несколько дней назад, как только узнала. Стоило за новостями следить, но, честное слово, мне много чего <em>стоило бы делать</em>.</p>
+<p>Во-вторых, по работе прямо сегодня возник тот же вопрос. <a id="more"></a> Заменили одно готовое решение на другое, сделанное на его основе: раньше использовали для своих внутренних проектов чистый <a href="https://github.com/jwilder/nginx-proxy" target="_blank" rel="noopener">Nginx-Proxy от @jwilder</a> (постом ниже о некотором применении для него писала), а сегодня ставила <a href="https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion" target="_blank" rel="noopener">решение от @evertramos</a> с автоматическим получением/обновлением сертификатов Let’s Encrypt.</p>
+<figure class="left full-width"><br>  <img src="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg" alt=" "><br></figure>
+
+<p>Просто добавить -e LETSENCRYPT_HOST в файлы docker-compose существующих сервисов.<br>Случилось, что один контейнер, который уже был присоединён к сети nginx-proxy к моменту установки нового Nginx-контейнера, не получил своего сертификата. Решилось просто: убрать этот неполучивший (docker-compose down, данные во внешнем томе и это их не затронуло), перезапустить nginx, загрузить неполучивший заново (docker-compose up -d), перезагрузить nginx. Умнее было бы, наверное, выключить все нужные сервисы перед установкой новой версии. Ну хоть решилось всё быстро и без проблем.<br>Говорят, завтра будем на какой-то крутой сервер всё это ставить.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mariepaganel.github.io/2018/05/ssl-adventures/" data-id="cjhujcsle0001kzoinvzwwyan" class="article-share-link">Поделиться</a>
+      
+        <a href="http://mariepaganel.github.io/2018/05/ssl-adventures/#disqus_thread" class="article-comment-link">Комментарии</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/заметки/">заметки</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/docker-compose-db-path/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Предыдущий</strong>
+      <div class="article-nav-title">Доступ к базе данных в docker-compose</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Категории</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Метки</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Symfony/">Symfony</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/блог/">блог</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/заметки/">заметки</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Облако меток</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Symfony/" style="font-size: 10px;">Symfony</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/блог/" style="font-size: 10px;">блог</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Архив</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Недавние записи</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/ssl-adventures/">Приключения с SSL</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/docker-compose-db-path/">Доступ к базе данных в docker-compose</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/nginx-docker-redirect/">Перенаправление виртуального хоста для nginx-proxy в Docker</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/first-post/">Первый пост</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Мария Керсонова<br>
+      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'mariepaganel';
+  
+  var disqus_url = 'http://mariepaganel.github.io/2018/05/ssl-adventures/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
