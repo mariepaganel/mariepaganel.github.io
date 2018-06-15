@@ -109,7 +109,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Задача"><a href="#Задача" class="headerlink" title="Задача"></a>Задача</h2><p>Запустить в PhpStorm дебаг php-приложения, запущенного в docker-контейнере на том же компьютере, где работает PhpStorm.<br>Уточняю особенно, что контейнер на той же машине, где IDE, потому что с задачей дебага на удалённом сервере я пока не справилась.</p>
-<h2 id="Настройка-Docker"><a href="#Настройка-Docker" class="headerlink" title="Настройка Docker"></a>Настройка Docker</h2><p>Я пользуюсь <a href="phpdocker.io">генератором docker-compose PHPDocker.io</a>, возьмём его результат за основу. Не забыть в поле Extensions поставить галочку напротив XDebug.<br>После, как обычно, скачать архив, распаковать файлы в корневую папку проекта.<br>В папке /phpdocker/php-fpm, где уже лежит файл с настройками php-ini-overrides.ini, я создала ещё один файл - xdebug.ini.</p>
+<h2 id="Настройка-Docker"><a href="#Настройка-Docker" class="headerlink" title="Настройка Docker"></a>Настройка Docker</h2><p>Я пользуюсь <a href="https://phpdocker.io" target="_blank" rel="noopener">генератором docker-compose PHPDocker.io</a>, возьмём его результат за основу. Не забыть в поле Extensions поставить галочку напротив XDebug.<br>После, как обычно, скачать архив, распаковать файлы в корневую папку проекта.<br>В папке /phpdocker/php-fpm, где уже лежит файл с настройками php-ini-overrides.ini, я создала ещё один файл - xdebug.ini.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; ./phpdocker/php-fpm/xdebug.ini</span></span><br><span class="line"></span><br><span class="line"><span class="attr">zend_extension</span>=/usr/lib/php/<span class="number">20170718</span>/xdebug.so</span><br><span class="line">xdebug.remote_enable=on</span><br><span class="line">xdebug.remote_handler=dbgp</span><br><span class="line">xdebug.remote_port=9000</span><br><span class="line">xdebug.remote_autostart=on</span><br><span class="line">xdebug.remote_connect_back=0</span><br><span class="line">xdebug.idekey=PHPSTORM</span><br></pre></td></tr></table></figure>
 <p>За точными объяснениями настроек отсылаю к <a href="https://xdebug.org/docs/remote" target="_blank" rel="noopener">официальной документации</a>. Замечу только, что порт 9000 можно изменить, но тогда его же нужно изменить в настройках PhpStorm. Кстати, remote_host можно указывать в этом же файле. Перейдём к нему вот-вот, я его указываю в docker-compose для удобства изменения.<br>
         
@@ -120,7 +120,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/" data-id="cjifoefd30000zgoi093dyh8f" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/" data-id="cjifvui7d0001qgoi0zmipuqf" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -171,7 +171,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/05/ssl-adventures/" data-id="cjifoefdg0001zgoiyk8zmd7b" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/05/ssl-adventures/" data-id="cjifvui860006qgoi66vam29i" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/05/ssl-adventures/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -222,7 +222,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/docker-compose-db-path/" data-id="cjifoefdv0004zgoiaafyd8db" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/docker-compose-db-path/" data-id="cjifvui7t0004qgoipphmj3jp" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/docker-compose-db-path/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -274,7 +274,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/nginx-docker-redirect/" data-id="cjifoefe80006zgoiq75tfqcs" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/nginx-docker-redirect/" data-id="cjifvui800005qgoiwh8jaxsw" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/nginx-docker-redirect/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -326,7 +326,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/first-post/" data-id="cjifoefe10005zgoioobxqa4a" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/first-post/" data-id="cjifvui6z0000qgoiz5pkvv5v" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/first-post/#disqus_thread" class="article-comment-link">Комментарии</a>
       
