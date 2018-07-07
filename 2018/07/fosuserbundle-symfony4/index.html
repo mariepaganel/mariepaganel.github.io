@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117517728-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <title>Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4 | Всё устроится математически</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Symfony уже обновилась до 4.1, популярные бандлы добавляют совместимость, а вот документацию обновлять не спешат. Когда я впервые пыталась установить FOSUserBundle, серьёзно запуталась. Для профессион">
+<meta name="keywords" content="Symfony">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4">
+<meta property="og:url" content="http://kersonova.ru/2018/07/fosuserbundle-symfony4/index.html">
+<meta property="og:site_name" content="Всё устроится математически">
+<meta property="og:description" content="Symfony уже обновилась до 4.1, популярные бандлы добавляют совместимость, а вот документацию обновлять не спешат. Когда я впервые пыталась установить FOSUserBundle, серьёзно запуталась. Для профессион">
+<meta property="og:locale" content="ru">
+<meta property="og:updated_time" content="2018-07-07T10:13:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4">
+<meta name="twitter:description" content="Symfony уже обновилась до 4.1, популярные бандлы добавляют совместимость, а вот документацию обновлять не спешат. Когда я впервые пыталась установить FOSUserBundle, серьёзно запуталась. Для профессион">
+  
+    <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner">
+    <img src="/css/images/banner.jpeg" style="display:none;" alt=""/>
+  </div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Всё устроится математически</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Наблюдать и работать</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS-каналы"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Поиск"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://kersonova.ru"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-fosuserbundle-symfony4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/fosuserbundle-symfony4/" class="article-date">
+  <time datetime="2018-07-07T10:13:24.000Z" itemprop="datePublished">2018-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Работа/">Работа</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Symfony уже обновилась до 4.1, популярные бандлы добавляют совместимость, а вот документацию обновлять не спешат. Когда я впервые пыталась установить FOSUserBundle, серьёзно запуталась. Для профессионалов это, может, и очевидно, но мне стоило разобраться сначала, как изменилась структура папок и куда теперь смотреть.</p>
+<h2 id="Установка"><a href="#Установка" class="headerlink" title="Установка"></a>Установка</h2><p>Предполагается, что установить Symfony и нужные компоненты вы уже сможете. Требуются Doctrine, Annotations, SwiftMiler, Translation и Twig – всё это уже есть в вашем проекте, если создали его как <code>symfony/website-skeleton</code>, и всё это нужно добавить, если использовали <code>symfony/skeleton</code>. И ещё нужны настроенные в файле .env доступ к базе данных и mailer.<br>Устанавливается FOSUserBundle просто, но шаги установки используют не те файлы, которые сейчас указаны в документации. Пройдёмся по порядку, указываю не полностью инструкцию – её найдёте в <a href="https://symfony.com/doc/current/bundles/FOSUserBundle/index.html" target="_blank" rel="noopener">документации</a> – а правильные папки и файлы в Symfony 4.</p>
+<h3 id="Обработка-шаблонов"><a href="#Обработка-шаблонов" class="headerlink" title="Обработка шаблонов"></a>Обработка шаблонов</h3><p>Иногда FOSUserBundle выдаёт ошибку при установке, если в файле <code>config/packages/framework.yaml</code> не указан обработчик шаблонов.<br>Просто добавить туда <code>templating: engines</code><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">framework:</span></span><br><span class="line"><span class="attr">    templating:</span></span><br><span class="line"><span class="attr">        engines:</span> <span class="string">['twig']</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="Создание-класса-User"><a href="#Создание-класса-User" class="headerlink" title="Создание класса User"></a>Создание класса User</h3><p>В папке <code>src/Entity</code></p>
+<h3 id="security-yaml"><a href="#security-yaml" class="headerlink" title="security.yaml"></a>security.yaml</h3><p>Теперь в <code>config/packages/security.yaml</code></p>
+<h2 id="Базовая-настройка"><a href="#Базовая-настройка" class="headerlink" title="Базовая настройка"></a>Базовая настройка</h2><p>Совсем рядом: <code>config/packages/fos_user.yaml</code><br>В примере у меня уже изменены формы регистрации и редактирования профиля, включено подтверждение регистрации по e-mail.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/packages/fos_user.yaml</span></span><br><span class="line"><span class="attr">fos_user:</span></span><br><span class="line"><span class="attr">    db_driver:</span> <span class="string">orm</span></span><br><span class="line"><span class="attr">    firewall_name:</span> <span class="string">main</span></span><br><span class="line"><span class="attr">    user_class:</span> <span class="string">App\Entity\User</span></span><br><span class="line"><span class="attr">    from_email:</span></span><br><span class="line"><span class="attr">        address:</span> <span class="string">"example@example.ru"</span></span><br><span class="line"><span class="attr">        sender_name:</span> <span class="string">"admin"</span></span><br><span class="line"><span class="attr">    registration:</span></span><br><span class="line"><span class="attr">        confirmation:</span></span><br><span class="line"><span class="attr">            enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        form:</span></span><br><span class="line"><span class="attr">            type:</span> <span class="string">App\Form\RegistrationFormType</span></span><br><span class="line"><span class="attr">    profile:</span></span><br><span class="line"><span class="attr">        form:</span></span><br><span class="line"><span class="attr">            type:</span> <span class="string">App\Form\ProfileFormType</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Прописать-адреса"><a href="#Прописать-адреса" class="headerlink" title="Прописать адреса"></a>Прописать адреса</h3><p>В файле <code>config/routes/fos_user.yaml</code>. Если этого файла нет, создать его.<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/routes/fos_user.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">fos_user:</span></span><br><span class="line"><span class="attr">    resource:</span> <span class="string">"@FOSUserBundle/Resources/config/routing/all.xml"</span></span><br></pre></td></tr></table></figure></p>
+<p>В остальном инструкция по установке в документации актуальна.</p>
+<h2 id="Замена-стандартных-сообщений-и-шаблонов"><a href="#Замена-стандартных-сообщений-и-шаблонов" class="headerlink" title="Замена стандартных сообщений и шаблонов"></a>Замена стандартных сообщений и шаблонов</h2><h3 id="Переводы"><a href="#Переводы" class="headerlink" title="Переводы"></a>Переводы</h3><p>Чтобы все надписи отображались корректно (на языке, который по умолчанию проставлен в <code>config/services.yaml</code>), должны быть включены переводы в файле <code>config/packages/translation.yaml</code>. Обычно всё там настроено по умолчанию:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/packages/translation.yaml</span></span><br><span class="line"><span class="attr">framework:</span></span><br><span class="line"><span class="attr">    default_locale:</span> <span class="string">'%locale%'</span></span><br><span class="line"><span class="attr">    translator:</span></span><br><span class="line"><span class="attr">        paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">'%kernel.project_dir%/translations'</span></span><br><span class="line"><span class="attr">        fallbacks:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">'%locale%'</span></span><br></pre></td></tr></table></figure></p>
+<p>Для того, чтобы изменить сообщения, нужно в папке <code>translations</code> создать файл <code>FOSUserBundle.ru.yml</code> (например, для русского языка). Исходный файл найдёте в <code>vendor/friendsofsymfony/user-bundle/Resources/translations/</code>, там можно структуру посмотреть.<br>Но после изменения файлов переводы не обновляются в отображении страниц, пока не почистить кэш:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/console cache:clear</span><br></pre></td></tr></table></figure></p>
+<h3 id="Шаблоны"><a href="#Шаблоны" class="headerlink" title="Шаблоны"></a>Шаблоны</h3><p>Казалось, что это самое сложное и запутанное, а между тем подсказки охотно выдаёт Profiler.<br>Итак, для замены шаблонов нужно создать папку <code>templates/bundles/FOSUserBundle/</code>, а в ней структура должна быть как в <code>vendor/friendsofsymfony/user-bundle/Resources/views/</code>.<br>Всё заменять совсем не нужно. Например, в рабочем проекте у меня лежат только эти файлы:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── layout.html.twig</span><br><span class="line">├── Profile</span><br><span class="line">│   ├── edit_content.html.twig</span><br><span class="line">│   └── show_content.html.twig</span><br><span class="line">├── Registration</span><br><span class="line">│   ├── confirmed.html.twig</span><br><span class="line">│   ├── email.txt.twig</span><br><span class="line">│   └── register_content.html.twig</span><br><span class="line">└── Security</span><br><span class="line">    └── login_content.html.twig</span><br></pre></td></tr></table></figure></p>
+<p>Остальное просто ссылается на тот же самый layout.html.twig. За что и люблю Twig.</p>
+<p>На этом всё.<br>В конфигурации выше был ещё пример, как указывать <a href="https://symfony.com/doc/master/bundles/FOSUserBundle/overriding_forms.html" target="_blank" rel="noopener">перезаписанные формы</a>, но файл <code>config/services.yaml</code> остался на месте.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kersonova.ru/2018/07/fosuserbundle-symfony4/" data-id="cjjbc1aqv0000rnoi8tox54im" class="article-share-link">Поделиться</a>
+      
+        <a href="http://kersonova.ru/2018/07/fosuserbundle-symfony4/#disqus_thread" class="article-comment-link">Комментарии</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Symfony/">Symfony</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/06/phpstorm-docker-xdebug-local/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Предыдущий</strong>
+      <div class="article-nav-title">Дебаг в PhpStorm с помощью XDebug под Docker, локально</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Категории</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Облако меток</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 15px;">Symfony</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/блог/" style="font-size: 10px;">блог</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Архив</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Недавние записи</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/fosuserbundle-symfony4/">Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/phpstorm-docker-xdebug-local/">Дебаг в PhpStorm с помощью XDebug под Docker, локально</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/ssl-adventures/">Приключения с SSL</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/docker-compose-db-path/">Доступ к базе данных в docker-compose</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/nginx-docker-redirect/">Перенаправление виртуального хоста для nginx-proxy в Docker</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Мария Керсонова<br>
+      Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'mariepaganel';
+  
+  var disqus_url = 'http://kersonova.ru/2018/07/fosuserbundle-symfony4/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
