@@ -82,6 +82,126 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-ajax-twig" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/ajax-twig/" class="article-date">
+  <time datetime="2018-08-21T08:24:08.000Z" itemprop="datePublished">2018-08-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Работа/">Работа</a>►<a class="article-category-link" href="/categories/Работа/Рецепты/">Рецепты</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/ajax-twig/">Обновление части шаблона Twig с помощью Ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Столкнулась с необходимостью обновить часть страницы, созданной в Twig, с помощью ajax-запроса. Как обновить страницу, используя шаблон, где есть готовый цикл, который я хочу снова использовать? В поиске готовых вариантов нашла всего один вопрос на StackOverflow и кучу кривых переводов той же страницы. Возможно, решение такое тривиальное? Или никто не занимается этим? Или мои навыки поиска решений далеки от идеала?<br>В любом случае, на будущее запишу своё решение.<br>Задача и код сильно упрощены, в моём проекте нужно было получать другие объекты.</p>
+<p><strong>Задача</strong>:<br>Каждые 10 секунд обновлять на странице данные: показывать 10 последних комментариев.</p>
+<p><strong>Алгоритм</strong>:</p>
+<ol>
+<li>Ту часть страницы, которую нужно обновлять, выделить в отдельный шаблон.</li>
+<li>При запросе обрабатывать этот отдельный шаблон и отправлять результат в ответе.</li>
+</ol>
+<p>Я использую Symfony 4, и вот в контроллере есть страница, где выводятся последние комментарии:<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/ajax-twig/#more">Читать дальше</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kersonova.ru/2018/08/ajax-twig/" data-id="cjl3havq000024roi1m11bi77" class="article-share-link">Поделиться</a>
+      
+        <a href="http://kersonova.ru/2018/08/ajax-twig/#disqus_thread" class="article-comment-link">Комментарии</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Symfony/">Symfony</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Twig/">Twig</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-always-progress" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/always-progress/" class="article-date">
+  <time datetime="2018-08-10T16:03:08.000Z" itemprop="datePublished">2018-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/День-за-днём/">День за днём</a>►<a class="article-category-link" href="/categories/День-за-днём/Обучение/">Обучение</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/always-progress/">Всегда учиться - учитывать реальность</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="right half-width"><br>  <img src="/images/pexels-photo-577585.jpeg" alt="Photo by Kevin Ku from Pexels"><br></figure>
+
+<p>Я часто встречаю посты о том, что разработчик должен постоянно учиться и развиваться, браться за реальные проекты, рассылать резюме и всячески “прогрессировать”. Советы разной степени полезности о том, как быть крутым. Хотя многие пишут их от чистого сердца, желая помочь новичкам, далеко не все в реальности учитывают новичка как человека.</p>
+<p>Я написала длинный пост о том, как я получала свои знания, но решила не публиковать его: это много личных воспоминаний, достаточно сказать, что путь далеко не был прямым и был полон случайностей. Я уверена, что это обычное дело для любого человека и для любой специальности.</p>
+<p>Вместо этого поста о себе я хочу дать свои советы! И они тоже будут полезны не всем, так что ура относительной полезности в глазах читателя:</p>
+<ol>
+<li>Учитесь так, как вам это нравится.</li>
+<li>Учитесь всегда, но не за счёт собственного здоровья и благополучия.</li>
+<li>Не поддавайтесь на <em>слабо</em> всех этих профи из интернета, они сами чаще всего зарвавшиеся новички. Можно использовать их данные и их мнения, но не подчиняться этим мнениям.</li>
+<li>Сообщество разработчиков должно быть дружественным. Если вы столкнулись с грубостью, то виноваты не вы: что бы вы ни пытались сделать криво, какие бы глупые вопросы ни задавали, если вам ответили грубо – это не из-за вас, это эго отвечающего. При необходимости меняйте сообщество: вы не клялись в верности рыцарскому ордену, это всего лишь один форум или одна группа по интересам.</li>
+<li>Не будьте грубы сами. Если у вас нет моральных сил, которые вы готовы вложить в общение, если нет никакого желания никому помогать, пройдите мимо. Никому не вменяется в обязанность помогать другому, но когда вы сами обнаружите в себе готовность и желание отдавать – это радость и удовольствие.</li>
+<li>Все эти пункты тоже только буковки, написанные одним человеком. Я по эту сторону экрана не могу вам диктовать. Думайте сами по себе, думайте о самих себе и поступайте так, как считаете нужным.</li>
+</ol>
+<p>Я сама только начинаю понимать, что ответственность перед самой собой и установление личных границ не означают лень, грубость или отрешение от мира.</p>
+<p>Посты такого рода, нравоучительно-философские, редко полезны. Куда интереснее и познавательнее читать о новой технологии, о полезной функции или о событии в мире IT. Поэтому этот пост куда полезнее мне самой – и, может быть, проходящие мимо читатели ему порадуются.</p>
+<p>В обучении и в прогрессе учитывается не только желание и воля, но и возможности, и силы, и окружающие, и способности, и вообще реальный мир. Человек не состоит из одной только воли (а если состоит, то не позже чем через пару недель его стоит положить в больницу, чтобы не пришлось хоронить).</p>
+<p>Я советую не прекращать учиться на самой жизни, а не на буковках в бложиках. Где-то там, если вам интересна эта тема, найдётся место HTML, CSS, JavaScript, PHP, Python, C++ и другим страшным буквам и словам.</p>
+<p>И когда у вас будут на то силы, то да, выберите себе проект и делайте его!<br>Я вот делаю <a href="https://jv.kersonova.ru" target="_blank" rel="noopener">соцсеть для проекта “12 книг Верна за 12 месяцев”</a>.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kersonova.ru/2018/08/always-progress/" data-id="cjko6kqie0000gkoiai0kil8f" class="article-share-link">Поделиться</a>
+      
+        <a href="http://kersonova.ru/2018/08/always-progress/#disqus_thread" class="article-comment-link">Комментарии</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/учёба/">учёба</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-fosuserbundle-symfony4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/fosuserbundle-symfony4/" class="article-date">
@@ -109,7 +229,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p>Symfony уже обновилась до 4.1, популярные бандлы добавляют совместимость, а вот документацию обновлять не спешат. Когда я впервые пыталась установить FOSUserBundle, серьёзно запуталась. Для профессионалов это, может, и очевидно, но мне стоило разобраться сначала, как изменилась структура папок и куда теперь смотреть.</p>
-<h2 id="Установка"><a href="#Установка" class="headerlink" title="Установка"></a>Установка</h2><p>Предполагается, что установить Symfony и нужные компоненты вы уже сможете. Требуются Doctrine, Annotations, SwiftMiler, Translation и Twig – всё это уже есть в вашем проекте, если создали его как <code>symfony/website-skeleton</code>, и всё это нужно добавить, если использовали <code>symfony/skeleton</code>. И ещё нужны настроенные в файле .env доступ к базе данных и mailer.<br>Устанавливается FOSUserBundle просто, но шаги установки используют не те файлы, которые сейчас указаны в документации. Пройдёмся по порядку, указываю не полностью инструкцию – её найдёте в <a href="https://symfony.com/doc/current/bundles/FOSUserBundle/index.html" target="_blank" rel="noopener">документации</a> – а правильные папки и файлы в Symfony 4.</p>
+<h2 id="Установка"><a href="#Установка" class="headerlink" title="Установка"></a>Установка</h2><p>Предполагается, что установить Symfony и нужные компоненты вы уже сможете. Требуются Doctrine, Annotations, SwiftMailer, Translation и Twig – всё это уже есть в вашем проекте, если создали его как <code>symfony/website-skeleton</code>, и всё это нужно добавить, если использовали <code>symfony/skeleton</code>. И ещё нужны настроенные в файле .env доступ к базе данных и mailer.<br>Устанавливается FOSUserBundle просто, но шаги установки используют не те файлы, которые сейчас указаны в документации. Пройдёмся по порядку, указываю не полностью инструкцию – её найдёте в <a href="https://symfony.com/doc/current/bundles/FOSUserBundle/index.html" target="_blank" rel="noopener">документации</a> – а правильные папки и файлы в Symfony 4.</p>
 <h3 id="Обработка-шаблонов"><a href="#Обработка-шаблонов" class="headerlink" title="Обработка шаблонов"></a>Обработка шаблонов</h3><p>Иногда FOSUserBundle выдаёт ошибку при установке, если в файле <code>config/packages/framework.yaml</code> не указан обработчик шаблонов.<br>Просто добавить туда <code>templating: engines</code><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">framework:</span></span><br><span class="line"><span class="attr">    templating:</span></span><br><span class="line"><span class="attr">        engines:</span> <span class="string">['twig']</span></span><br></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
@@ -119,7 +239,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/07/fosuserbundle-symfony4/" data-id="cjjbc1aqv0000rnoi8tox54im" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/07/fosuserbundle-symfony4/" data-id="cjko6kqin0001gkoikypjxhxy" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/07/fosuserbundle-symfony4/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -141,7 +261,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Работа/">Работа</a>
+    <a class="article-category-link" href="/categories/Работа/">Работа</a>►<a class="article-category-link" href="/categories/Работа/Рецепты/">Рецепты</a>
   </div>
 
   </div>
@@ -172,7 +292,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/" data-id="cjjbc1ar40001rnoisg66gmgw" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/" data-id="cjko6kqjs000ogkoibb09jgg7" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/06/phpstorm-docker-xdebug-local/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -223,7 +343,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/05/ssl-adventures/" data-id="cjjbc1arx000arnoiv1fehm6j" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/05/ssl-adventures/" data-id="cjko6kqjq000mgkoinff8kq2y" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/05/ssl-adventures/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -274,7 +394,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/docker-compose-db-path/" data-id="cjjbc1arg0004rnoi33js9h05" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/docker-compose-db-path/" data-id="cjko6kqiv0004gkoi7k0b4mbo" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/docker-compose-db-path/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -296,7 +416,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Работа/">Работа</a>
+    <a class="article-category-link" href="/categories/Работа/">Работа</a>►<a class="article-category-link" href="/categories/Работа/Рецепты/">Рецепты</a>
   </div>
 
   </div>
@@ -326,7 +446,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/nginx-docker-redirect/" data-id="cjjbc1ars0006rnoib1uors5h" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/nginx-docker-redirect/" data-id="cjko6kqjm000jgkoiel7sj2ry" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/nginx-docker-redirect/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -378,7 +498,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/04/first-post/" data-id="cjjbc1arl0005rnoizbin45z5" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/04/first-post/" data-id="cjko6kqjn000kgkoipuffsy90" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/04/first-post/#disqus_thread" class="article-comment-link">Комментарии</a>
       
@@ -403,7 +523,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Категории</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/Обучение/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/Рецепты/">Рецепты</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -413,7 +533,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Облако меток</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 15px;">Symfony</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/блог/" style="font-size: 10px;">блог</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a>
+      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 16.67px;">Symfony</a> <a href="/tags/Twig/" style="font-size: 10px;">Twig</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/блог/" style="font-size: 10px;">блог</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a> <a href="/tags/учёба/" style="font-size: 10px;">учёба</a>
     </div>
   </div>
 
@@ -422,7 +542,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Архив</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">август 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
     </div>
   </div>
 
@@ -435,6 +555,14 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/08/ajax-twig/">Обновление части шаблона Twig с помощью Ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/always-progress/">Всегда учиться - учитывать реальность</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/fosuserbundle-symfony4/">Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4</a>
           </li>
         
@@ -444,14 +572,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2018/05/ssl-adventures/">Приключения с SSL</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/docker-compose-db-path/">Доступ к базе данных в docker-compose</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/nginx-docker-redirect/">Перенаправление виртуального хоста для nginx-proxy в Docker</a>
           </li>
         
       </ul>
