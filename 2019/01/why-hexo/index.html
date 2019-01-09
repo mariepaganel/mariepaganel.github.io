@@ -18,22 +18,22 @@ ga('send', 'pageview');
 
 
   
-  <title>Приключения с SSL | Всё устроится математически</title>
+  <title>Если я пишу на Symfony, почему использую Hexo для блога? | Всё устроится математически</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
-<meta name="keywords" content="Docker,nginx,заметки">
+  <meta name="description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
+<meta name="keywords" content="блог,hexo,вопросы,github,хостинг">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Приключения с SSL">
-<meta property="og:url" content="http://kersonova.ru/2018/05/ssl-adventures/index.html">
+<meta property="og:title" content="Если я пишу на Symfony, почему использую Hexo для блога?">
+<meta property="og:url" content="http://kersonova.ru/2019/01/why-hexo/index.html">
 <meta property="og:site_name" content="Всё устроится математически">
-<meta property="og:description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
+<meta property="og:description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
 <meta property="og:locale" content="ru">
-<meta property="og:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
-<meta property="og:updated_time" content="2018-05-31T12:10:51.000Z">
+<meta property="og:image" content="http://kersonova.ru/images/pexels-photo-1591056.jpeg">
+<meta property="og:updated_time" content="2019-01-09T07:40:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Приключения с SSL">
-<meta name="twitter:description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
+<meta name="twitter:title" content="Если я пишу на Symfony, почему использую Hexo для блога?">
+<meta name="twitter:description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
+<meta name="twitter:image" content="http://kersonova.ru/images/pexels-photo-1591056.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -87,14 +87,14 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-ssl-adventures" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-why-hexo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/ssl-adventures/" class="article-date">
-  <time datetime="2018-05-31T12:10:51.000Z" itemprop="datePublished">2018-05-31</time>
+    <a href="/2019/01/why-hexo/" class="article-date">
+  <time datetime="2019-01-09T07:40:12.000Z" itemprop="datePublished">2019-01-09</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Работа/">Работа</a>
+    <a class="article-category-link" href="/categories/Полезное/">Полезное</a>
   </div>
 
   </div>
@@ -105,7 +105,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Приключения с SSL
+      Если я пишу на Symfony, почему использую Hexo для блога?
     </h1>
   
 
@@ -113,21 +113,29 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.<br>Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог размещён) прямо <em>в начале этого мая</em> начали поддерживать ssl-сертификаты и перенаправление на https для других доменов. Когда я создавала блог, поддерживали только для собственных, поэтому когда я перешла на свой домен (хорошо иметь редкую фамилию))), то сначала оставалась без безопасности.<br>Чтобы получить перенаправление на https, нужно было просто убрать из настроек custom domain и после добавить назад. Сделала это несколько дней назад, как только узнала. Стоило за новостями следить, но, честное слово, мне много чего <em>стоило бы делать</em>.</p>
-<p>Во-вторых, по работе прямо сегодня возник тот же вопрос. <a id="more"></a> Заменили одно готовое решение на другое, сделанное на его основе: раньше использовали для своих внутренних проектов чистый <a href="https://github.com/jwilder/nginx-proxy" target="_blank" rel="noopener">Nginx-Proxy от @jwilder</a> (постом ниже о некотором применении для него писала), а сегодня ставила <a href="https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion" target="_blank" rel="noopener">решение от @evertramos</a> с автоматическим получением/обновлением сертификатов Let’s Encrypt.</p>
-<figure class="left full-width"><br>  <img src="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg" alt=" "><br></figure>
+        <p>Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё так же, как я – просто описание того, что я использую.</p>
+<p>Меня спросили: <strong>почему, если я пишу на Symfony, я не сделаю себе блог на Symfony?</strong> Неужели не могу написать?<br>Конечно, я могу!</p>
+<p>Но я завела статический блог, потому что он дёшев и прочен. Вместо динамической системы, которая может падать от недостатка ресурсов, это просто html-страницы, немножко css и js. Он лежит на бесплатном хостинге статических сайтов GitHub Pages (просто GitHub-репозиторий), я плачу таким образом только за домен.</p>
+<figure class="left half-width"><br>  <img src="/images/pexels-photo-1591056.jpeg" alt="Photo by Miguel Á. Padriñán from Pexels"><br></figure>
 
-<p>Просто добавить -e LETSENCRYPT_HOST в файлы docker-compose существующих сервисов.<br>Случилось, что один контейнер, который уже был присоединён к сети nginx-proxy к моменту установки нового Nginx-контейнера, не получил своего сертификата. Решилось просто: убрать этот неполучивший (docker-compose down, данные во внешнем томе и это их не затронуло), перезапустить nginx, загрузить неполучивший заново (docker-compose up -d), перезагрузить nginx. Умнее было бы, наверное, выключить все нужные сервисы перед установкой новой версии. Ну хоть решилось всё быстро и без проблем.<br>Говорят, завтра будем на какой-то крутой сервер всё это ставить.</p>
+<p>Для блога мне не нужно никаких сложных функций. Комментарии предоставляет Disqus (хотя я думаю перейти на другое решение, когда будет время разобраться в этом вопросе подробнее), RSS генерирует плагин Hexo.<br><a id="more"></a><br>Кстати о генерации – я пишу посты в Markdown, после ввожу команды<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>или даже<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate --deploy</span><br></pre></td></tr></table></figure></p>
+<p>и Hexo делает остальную работу за меня. Вжух – и пост уже в блоге. (Конечно, предварительно я настроила, куда публиковать).</p>
+<p>Отчасти поэтому, кстати, давно не было постов – технические сложности, пришлось переставлять систему вместо обновления, а потом руки не доходили поставить hexo назад. Но в этом году я надеюсь чаще записывать полезное в блог. Рабочие и личные проекты разрастаются, мелкие полезные вещи стоит сохранять на будущее.</p>
+<p>Возвращаясь к генератору статических сайтов. Итак, Hexo сделал всю работу за меня и в блог отправились обновлённые страницы – просто html-страницы. Идеал сайта – лёгкий, простой, всем доступный.</p>
+<p>И, конечно, можно создавать свои темы и плагины или выбрать готовые.</p>
+<p>Есть куча <a href="https://www.staticgen.com/" target="_blank" rel="noopener">генераторов статических сайтов</a>, самый популярный из них, если не ошибаюсь, Jekyll. А GitHub Pages теперь ещё и позволяют к любому репозиторию статического сайта применить не только стандартную, но и одну из пользовательских тем, которых полно. Исследуйте этот вопрос подробнее, если хотите, я интересовалась только поверхностно.</p>
+<p>Я убеждена, что делать сложный сайт нужно только если есть такая необходимость. У моего блога её нет.<br>У некоторых моих других проектов – есть, и я их с удовольствием пишу на Symfony. А для блога – просто использую простые и удобные инструменты, написанные до меня.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/05/ssl-adventures/" data-id="cjqovii9o0006rbxcwpapkwvg" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2019/01/why-hexo/" data-id="cjqovj8gu001wrbxcximeslpd" class="article-share-link">Поделиться</a>
       
-        <a href="http://kersonova.ru/2018/05/ssl-adventures/#disqus_thread" class="article-comment-link">Комментарии</a>
+        <a href="http://kersonova.ru/2019/01/why-hexo/#disqus_thread" class="article-comment-link">Комментарии</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/заметки/">заметки</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/блог/">блог</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/вопросы/">вопросы</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/хостинг/">хостинг</a></li></ul>
 
     </footer>
   </div>
@@ -135,19 +143,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2018/06/phpstorm-docker-xdebug-local/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Следующий</strong>
-      <div class="article-nav-title">
-        
-          Дебаг в PhpStorm с помощью XDebug под Docker, локально
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/docker-compose-db-path/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/ajax-twig/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Предыдущий</strong>
-      <div class="article-nav-title">Доступ к базе данных в docker-compose</div>
+      <div class="article-nav-title">Обновление части шаблона Twig с помощью Ajax</div>
     </a>
   
 </nav>
@@ -250,7 +249,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'mariepaganel';
   
-  var disqus_url = 'http://kersonova.ru/2018/05/ssl-adventures/';
+  var disqus_url = 'http://kersonova.ru/2019/01/why-hexo/';
   
   (function(){
     var dsq = document.createElement('script');
