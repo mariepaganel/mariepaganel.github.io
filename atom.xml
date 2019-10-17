@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kersonova.ru/"/>
-  <updated>2019-01-09T07:40:12.000Z</updated>
+  <updated>2019-10-17T19:46:51.000Z</updated>
   <id>http://kersonova.ru/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ищу работу</title>
+    <link href="http://kersonova.ru/2019/10/looking-for-a-job/"/>
+    <id>http://kersonova.ru/2019/10/looking-for-a-job/</id>
+    <published>2019-10-17T19:46:51.000Z</published>
+    <updated>2019-10-17T19:46:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="left half-width"><br>  <img src="/images/dream-job-4453054_640.jpg" alt="Image by Gerd Altmann from Pixabay"><br></figure><p>В блоге давно не было обновлений, а всё потому, что я не делаю теперь ничего интересного, о чём можно рассказать. Начальник меня опять подвёл – при этом, я уверена, считая, что это я подвожу его, – и, в общем, я в поиске работы. <a href="https://resume.kersonova.ru" target="_blank" rel="noopener">Резюме</a> вот опубликовала, как бы грустно и пусто оно ни выглядело.</p><p>Со своими проектами у меня всегда было трудно, я, видимо, такой человек, который предпочитает работать на кого-то, в команде и с конкретными задачами. Самостоятельно поднимать тяжёлый коммерческий сайт со сложной задумкой, конечно, весело, но опыта моего на это не хватает, ресурса стрессоучтойчивости тем более. А если вместо зарплаты или просто помощи в разработке меня кормят баснями о светлом будущем, пока сами забираются в Bitrix и прочее 1с, то я вообще перестаю реагировать. Впрочем, перестану жаловаться на прошлую работу, и сосредоточусь на поиске новой.</p><p>В общем, если вам нужен в команду кто-то настолько грустный, как я, совсем немного опытный в PHP, Symfony, Docker и о-чём-я-тут-ещё-писала, см. список тэгов, – то скорее email me. Или, если вы не нанимаете, может, отправьте ссылки на меня кому-то знакомому, у кого есть вакансии.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;left half-width&quot;&gt;&lt;br&gt;  &lt;img src=&quot;/images/dream-job-4453054_640.jpg&quot; alt=&quot;Image by Gerd Altmann from Pixabay&quot;&gt;&lt;br&gt;&lt;/figure&gt;
+
+&lt;
+      
+    
+    </summary>
+    
+      <category term="День за днём" scheme="http://kersonova.ru/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/"/>
+    
+    
+      <category term="ищу работу" scheme="http://kersonova.ru/tags/%D0%B8%D1%89%D1%83-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83/"/>
+    
+  </entry>
   
   <entry>
     <title>Если я пишу на Symfony, почему использую Hexo для блога?</title>
@@ -78,11 +105,11 @@
       <category term="Рецепты" scheme="http://kersonova.ru/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/"/>
     
     
-      <category term="Symfony" scheme="http://kersonova.ru/tags/Symfony/"/>
-    
       <category term="Twig" scheme="http://kersonova.ru/tags/Twig/"/>
     
       <category term="Ajax" scheme="http://kersonova.ru/tags/Ajax/"/>
+    
+      <category term="Symfony" scheme="http://kersonova.ru/tags/Symfony/"/>
     
   </entry>
   
