@@ -1,1 +1,0 @@
-I use [Hexo](https://hexo.io/).

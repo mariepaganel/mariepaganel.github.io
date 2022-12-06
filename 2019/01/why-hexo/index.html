@@ -21,19 +21,21 @@ ga('send', 'pageview');
   <title>Если я пишу на Symfony, почему использую Hexo для блога? | Всё устроится математически</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
-<meta name="keywords" content="блог,hexo,вопросы,github,хостинг">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Если я пишу на Symfony, почему использую Hexo для блога?">
 <meta property="og:url" content="http://kersonova.ru/2019/01/why-hexo/index.html">
 <meta property="og:site_name" content="Всё устроится математически">
 <meta property="og:description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
-<meta property="og:locale" content="ru">
-<meta property="og:image" content="http://kersonova.ru/images/pexels-photo-1591056.jpeg">
-<meta property="og:updated_time" content="2019-01-09T07:40:12.000Z">
+<meta property="og:locale" content="ru_RU">
+<meta property="article:published_time" content="2019-01-09T07:40:12.000Z">
+<meta property="article:modified_time" content="2019-01-09T07:40:12.000Z">
+<meta property="article:author" content="Мария Керсонова">
+<meta property="article:tag" content="блог">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="вопросы">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="хостинг">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Если я пишу на Symfony, почему использую Hexo для блога?">
-<meta name="twitter:description" content="Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё т">
-<meta name="twitter:image" content="http://kersonova.ru/images/pexels-photo-1591056.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -43,8 +45,10 @@ ga('send', 'pageview');
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container">
@@ -59,10 +63,6 @@ ga('send', 'pageview');
         <a href="/" id="logo">Всё устроится математически</a>
       </h1>
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Наблюдать и работать</a>
-        </h2>
-      
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
@@ -72,7 +72,7 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/archives">Архив</a>
         
-          <a class="main-nav-link" href="https://resume.kersonova.ru">Резюме</a>
+          <a class="main-nav-link" target="_blank" rel="noopener" href="https://resume.kersonova.ru">Резюме</a>
         
       </nav>
       <nav id="sub-nav">
@@ -96,7 +96,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Полезное/">Полезное</a>
+    <a class="article-category-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a>
   </div>
 
   </div>
@@ -118,26 +118,32 @@ ga('send', 'pageview');
         <p>Этот пост для начинающих в создании сайтов, которые уже немного разобрались в вопросе, но пока не уверены, где и как размещать свои собственные сайты и блоги. И это не реклама и не призыв делать всё так же, как я – просто описание того, что я использую.</p>
 <p>Меня спросили: <strong>почему, если я пишу на Symfony, я не сделаю себе блог на Symfony?</strong> Неужели не могу написать?<br>Конечно, я могу!</p>
 <p>Но я завела статический блог, потому что он дёшев и прочен. Вместо динамической системы, которая может падать от недостатка ресурсов, это просто html-страницы, немножко css и js. Он лежит на бесплатном хостинге статических сайтов GitHub Pages (просто GitHub-репозиторий), я плачу таким образом только за домен.</p>
-<figure class="left half-width"><br>  <img src="/images/pexels-photo-1591056.jpeg" alt="Photo by Miguel Á. Padriñán from Pexels"><br></figure>
+<figure class="left half-width">
+  ![Photo by Miguel Á. Padriñán from Pexels](/images/pexels-photo-1591056.jpeg)
+</figure>
 
-<p>Для блога мне не нужно никаких сложных функций. Комментарии предоставляет Disqus (хотя я думаю перейти на другое решение, когда будет время разобраться в этом вопросе подробнее), RSS генерирует плагин Hexo.<br><a id="more"></a><br>Кстати о генерации – я пишу посты в Markdown, после ввожу команды<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
-<p>или даже<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate --deploy</span><br></pre></td></tr></table></figure></p>
+<p>Для блога мне не нужно никаких сложных функций. Комментарии предоставляет Disqus (хотя я думаю перейти на другое решение, когда будет время разобраться в этом вопросе подробнее), RSS генерирует плагин Hexo.</p>
+<span id="more"></span>
+<p>Кстати о генерации – я пишу посты в Markdown, после ввожу команды</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>или даже </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate --deploy</span><br></pre></td></tr></table></figure>
 <p>и Hexo делает остальную работу за меня. Вжух – и пост уже в блоге. (Конечно, предварительно я настроила, куда публиковать).</p>
 <p>Отчасти поэтому, кстати, давно не было постов – технические сложности, пришлось переставлять систему вместо обновления, а потом руки не доходили поставить hexo назад. Но в этом году я надеюсь чаще записывать полезное в блог. Рабочие и личные проекты разрастаются, мелкие полезные вещи стоит сохранять на будущее.</p>
 <p>Возвращаясь к генератору статических сайтов. Итак, Hexo сделал всю работу за меня и в блог отправились обновлённые страницы – просто html-страницы. Идеал сайта – лёгкий, простой, всем доступный.</p>
 <p>И, конечно, можно создавать свои темы и плагины или выбрать готовые.</p>
-<p>Есть куча <a href="https://www.staticgen.com/" target="_blank" rel="noopener">генераторов статических сайтов</a>, самый популярный из них, если не ошибаюсь, Jekyll. А GitHub Pages теперь ещё и позволяют к любому репозиторию статического сайта применить не только стандартную, но и одну из пользовательских тем, которых полно. Исследуйте этот вопрос подробнее, если хотите, я интересовалась только поверхностно.</p>
+<p>Есть куча <a target="_blank" rel="noopener" href="https://www.staticgen.com/">генераторов статических сайтов</a>, самый популярный из них, если не ошибаюсь, Jekyll. А GitHub Pages теперь ещё и позволяют к любому репозиторию статического сайта применить не только стандартную, но и одну из пользовательских тем, которых полно. Исследуйте этот вопрос подробнее, если хотите, я интересовалась только поверхностно.</p>
 <p>Я убеждена, что делать сложный сайт нужно только если есть такая необходимость. У моего блога её нет.<br>У некоторых моих других проектов – есть, и я их с удовольствием пишу на Symfony. А для блога – просто использую простые и удобные инструменты, написанные до меня.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2019/01/why-hexo/" data-id="ck1sjzgpq001l7oxctair5ffk" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2019/01/why-hexo/" data-id="clbc2riew000k1ay6avzdgyn2" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2019/01/why-hexo/#disqus_thread" class="article-comment-link">Комментарии</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/блог/">блог</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/вопросы/">вопросы</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/хостинг/">хостинг</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%D0%B1%D0%BB%D0%BE%D0%B3/" rel="tag">блог</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B/" rel="tag">вопросы</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%D1%85%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B3/" rel="tag">хостинг</a></li></ul>
 
     </footer>
   </div>
@@ -168,7 +174,7 @@ ga('send', 'pageview');
 
 <section id="comments">
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 
@@ -180,7 +186,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Категории</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/Обучение/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Полезное/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/Рецепты/">Рецепты</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -190,7 +196,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Облако меток</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 16.67px;">Symfony</a> <a href="/tags/Twig/" style="font-size: 10px;">Twig</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/блог/" style="font-size: 13.33px;">блог</a> <a href="/tags/вопросы/" style="font-size: 10px;">вопросы</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a> <a href="/tags/ищу-работу/" style="font-size: 10px;">ищу работу</a> <a href="/tags/учёба/" style="font-size: 10px;">учёба</a> <a href="/tags/хостинг/" style="font-size: 10px;">хостинг</a>
+      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 16.67px;">Symfony</a> <a href="/tags/Twig/" style="font-size: 10px;">Twig</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/%D0%B1%D0%BB%D0%BE%D0%B3/" style="font-size: 16.67px;">блог</a> <a href="/tags/%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B/" style="font-size: 10px;">вопросы</a> <a href="/tags/%D0%B7%D0%B0%D0%BC%D0%B5%D1%82%D0%BA%D0%B8/" style="font-size: 13.33px;">заметки</a> <a href="/tags/%D0%B8%D1%89%D1%83-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83/" style="font-size: 10px;">ищу работу</a> <a href="/tags/%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/" style="font-size: 10px;">навыки</a> <a href="/tags/%D1%83%D1%87%D1%91%D0%B1%D0%B0/" style="font-size: 10px;">учёба</a> <a href="/tags/%D1%85%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B3/" style="font-size: 10px;">хостинг</a>
     </div>
   </div>
 
@@ -199,7 +205,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Архив</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">октябрь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">январь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">август 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">декабрь 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">октябрь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">январь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">август 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
     </div>
   </div>
 
@@ -210,6 +216,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Недавние записи</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/12/long-awaited-update/">Обновление и планы</a>
+          </li>
         
           <li>
             <a href="/2019/10/looking-for-a-job/">Ищу работу</a>
@@ -227,10 +237,6 @@ ga('send', 'pageview');
             <a href="/2018/08/always-progress/">Всегда учиться - учитывать реальность</a>
           </li>
         
-          <li>
-            <a href="/2018/07/fosuserbundle-symfony4/">Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -243,7 +249,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Мария Керсонова<br>
+      &copy; 2022 Мария Керсонова<br>
       Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -255,7 +261,7 @@ ga('send', 'pageview');
   
     <a href="/archives" class="mobile-nav-link">Архив</a>
   
-    <a href="https://resume.kersonova.ru" class="mobile-nav-link">Резюме</a>
+    <a target="_blank" rel="noopener" href="https://resume.kersonova.ru" class="mobile-nav-link">Резюме</a>
   
 </nav>
     
@@ -277,11 +283,17 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

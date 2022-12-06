@@ -21,17 +21,19 @@ ga('send', 'pageview');
   <title>Обновление части шаблона Twig с помощью Ajax | Всё устроится математически</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Столкнулась с необходимостью обновить часть страницы, созданной в Twig, с помощью ajax-запроса. Как обновить страницу, используя шаблон, где есть готовый цикл, который я хочу снова использовать? В пои">
-<meta name="keywords" content="Twig,Ajax,Symfony">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Обновление части шаблона Twig с помощью Ajax">
 <meta property="og:url" content="http://kersonova.ru/2018/08/ajax-twig/index.html">
 <meta property="og:site_name" content="Всё устроится математически">
 <meta property="og:description" content="Столкнулась с необходимостью обновить часть страницы, созданной в Twig, с помощью ajax-запроса. Как обновить страницу, используя шаблон, где есть готовый цикл, который я хочу снова использовать? В пои">
-<meta property="og:locale" content="ru">
-<meta property="og:updated_time" content="2018-08-24T10:10:58.334Z">
+<meta property="og:locale" content="ru_RU">
+<meta property="article:published_time" content="2018-08-21T08:24:08.000Z">
+<meta property="article:modified_time" content="2018-08-24T10:10:58.334Z">
+<meta property="article:author" content="Мария Керсонова">
+<meta property="article:tag" content="Twig">
+<meta property="article:tag" content="Ajax">
+<meta property="article:tag" content="Symfony">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Обновление части шаблона Twig с помощью Ajax">
-<meta name="twitter:description" content="Столкнулась с необходимостью обновить часть страницы, созданной в Twig, с помощью ajax-запроса. Как обновить страницу, используя шаблон, где есть готовый цикл, который я хочу снова использовать? В пои">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -41,8 +43,10 @@ ga('send', 'pageview');
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container">
@@ -57,10 +61,6 @@ ga('send', 'pageview');
         <a href="/" id="logo">Всё устроится математически</a>
       </h1>
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Наблюдать и работать</a>
-        </h2>
-      
     </div>
     <div id="header-inner" class="inner">
       <nav id="main-nav">
@@ -70,7 +70,7 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/archives">Архив</a>
         
-          <a class="main-nav-link" href="https://resume.kersonova.ru">Резюме</a>
+          <a class="main-nav-link" target="_blank" rel="noopener" href="https://resume.kersonova.ru">Резюме</a>
         
       </nav>
       <nav id="sub-nav">
@@ -94,7 +94,7 @@ ga('send', 'pageview');
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Работа/">Работа</a>►<a class="article-category-link" href="/categories/Работа/Рецепты/">Рецепты</a>
+    <a class="article-category-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a>►<a class="article-category-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a>
   </div>
 
   </div>
@@ -120,25 +120,33 @@ ga('send', 'pageview');
 <li>Ту часть страницы, которую нужно обновлять, выделить в отдельный шаблон.</li>
 <li>При запросе обрабатывать этот отдельный шаблон и отправлять результат в ответе.</li>
 </ol>
-<p>Я использую Symfony 4, и вот в контроллере есть страница, где выводятся последние комментарии:<br><a id="more"></a></p>
-<h3 id="Исходный-код"><a href="#Исходный-код" class="headerlink" title="Исходный код"></a>Исходный код</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">commentsPage</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  $comments = <span class="keyword">$this</span>-&gt;getDoctrine-&gt;getRepository(Comments::class)</span><br><span class="line">            -&gt;findLastTen();</span><br><span class="line"><span class="comment">// метод findLastTen написать в CommentsRepository</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;render(<span class="string">'comments_page.html.twig'</span>,[</span><br><span class="line">            <span class="string">'comments'</span> =&gt; $comments,</span><br><span class="line">        ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Я использую Symfony 4, и вот в контроллере есть страница, где выводятся последние комментарии:</p>
+<span id="more"></span>
+<h3 id="Исходный-код"><a href="#Исходный-код" class="headerlink" title="Исходный код"></a>Исходный код</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">commentsPage</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="variable">$comments</span> = <span class="variable language_">$this</span>-&gt;getDoctrine-&gt;<span class="title function_ invoke__">getRepository</span>(<span class="title class_">Comments</span>::<span class="variable language_">class</span>)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">findLastTen</span>();</span><br><span class="line"><span class="comment">// метод findLastTen написать в CommentsRepository</span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">render</span>(<span class="string">&#x27;comments_page.html.twig&#x27;</span>,[</span><br><span class="line">            <span class="string">&#x27;comments&#x27;</span> =&gt; <span class="variable">$comments</span>,</span><br><span class="line">        ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Её шаблон выглядит как-то так (очень упрощаю для примера):</p>
-<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# comments_page.html.twig #&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">extends</span></span> 'base.html.twig' %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">block</span></span> main %&#125;</span></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  <span class="template-tag">&#123;% <span class="name"><span class="keyword">for</span></span> comment in comments %&#125;</span></span><br><span class="line">    &lt;li&gt;<span class="template-variable">&#123;&#123; comment.text &#125;&#125;</span>&lt;/li&gt;</span><br><span class="line">  <span class="template-tag">&#123;% <span class="name"><span class="keyword">endfor</span></span> %&#125;</span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">endblock</span></span> %&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# comments_page.html.twig #&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">extends</span> <span class="string">&#x27;base.html.twig&#x27;</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">block</span> main <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  </span><span class="template-tag">&#123;%</span> <span class="name">for</span> comment <span class="keyword">in</span> comments <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; comment.text &#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  </span><span class="template-tag">&#123;%</span> <span class="name">endfor</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">endblock</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span></span><br></pre></td></tr></table></figure>
 <p>При обновлении страницы последние комментарии будут обновляться. А мы хотим делать это без обновления страницы.</p>
-<h3 id="Новый-twig-шаблон"><a href="#Новый-twig-шаблон" class="headerlink" title="Новый twig-шаблон"></a>Новый twig-шаблон</h3><p>Первым делом я выделю кусочек с комментариями в отдельный шаблон. (Лучшие практики: название файла с кусочком шаблона начинается с нижнего подчёркивания).<br><figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# _last_comments.html.twig #&#125;</span></span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  <span class="template-tag">&#123;% <span class="name"><span class="keyword">for</span></span> comment in comments %&#125;</span></span><br><span class="line">    &lt;li&gt;<span class="template-variable">&#123;&#123; comment.text &#125;&#125;</span>&lt;/li&gt;</span><br><span class="line">  <span class="template-tag">&#123;% <span class="name"><span class="keyword">endfor</span></span> %&#125;</span></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
-<p>И изменю шаблон первоначальный:<br><figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# comments_page.html.twig #&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">extends</span></span> 'base.html.twig' %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">block</span></span> main %&#125;</span></span><br><span class="line">  <span class="template-tag">&#123;% <span class="name"><span class="keyword">include</span></span> '_last_comments.html.twig' %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="keyword">endblock</span></span> %&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Новый-php-код"><a href="#Новый-php-код" class="headerlink" title="Новый php-код"></a>Новый php-код</h3><p>Нужно добавить страницу, к которой будем делать ajax-запрос.<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Route</span>("/last-comments", name="last_comments", methods=&#123;"POST"&#125;)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">lastComments</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  $comments = <span class="keyword">$this</span>-&gt;getDoctrine-&gt;getRepository(Comments::class)</span><br><span class="line">            -&gt;findLastTen();</span><br><span class="line"></span><br><span class="line">  $lastComments = <span class="keyword">$this</span>-&gt;renderView(<span class="string">'_last_comments.html.twig'</span>,[</span><br><span class="line">    <span class="string">'comments'</span> =&gt; $comments</span><br><span class="line">  ]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Response($lastComments);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Осталось добавить собственно запрос и повторять его.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;# comments_page.html.twig #&#125;</span><br><span class="line"></span><br><span class="line">&#123;% extends 'base.html.twig' %&#125;</span><br><span class="line">&#123;% block main %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"js-last-comments"</span>&gt;</span></span><br><span class="line">  &#123;% include '_last_comments.html.twig' %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block javascripts %&#125;</span><br><span class="line">  &#123;&#123; parent() &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    setInterval(function () &#123;</span></span><br><span class="line"><span class="undefined">      $.ajax(&#123;</span></span><br><span class="line"><span class="undefined">          method: 'POST',</span></span><br><span class="line"><span class="undefined">          url: "/last-comments"</span></span><br><span class="line"><span class="undefined">      &#125;).done(function (data) &#123;</span></span><br><span class="line"><span class="undefined">          $('.js-last-comments').html(data);</span></span><br><span class="line"><span class="undefined">      &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;, 10000);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Новый-twig-шаблон"><a href="#Новый-twig-шаблон" class="headerlink" title="Новый twig-шаблон"></a>Новый twig-шаблон</h3><p>Первым делом я выделю кусочек с комментариями в отдельный шаблон. (Лучшие практики: название файла с кусочком шаблона начинается с нижнего подчёркивания).</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# _last_comments.html.twig #&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  </span><span class="template-tag">&#123;%</span> <span class="name">for</span> comment <span class="keyword">in</span> comments <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; comment.text &#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  </span><span class="template-tag">&#123;%</span> <span class="name">endfor</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>И изменю шаблон первоначальный:</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# comments_page.html.twig #&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">extends</span> <span class="string">&#x27;base.html.twig&#x27;</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">block</span> main <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  </span><span class="template-tag">&#123;%</span> <span class="name">include</span> <span class="string">&#x27;_last_comments.html.twig&#x27;</span> <span class="template-tag">%&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="template-tag">&#123;%</span> <span class="name">endblock</span> <span class="template-tag">%&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Новый-php-код"><a href="#Новый-php-код" class="headerlink" title="Новый php-код"></a>Новый php-код</h3><p>Нужно добавить страницу, к которой будем делать ajax-запрос.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Route</span>(&quot;/last-comments&quot;, name=&quot;last_comments&quot;, methods=&#123;&quot;POST&quot;&#125;)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">lastComments</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="variable">$comments</span> = <span class="variable language_">$this</span>-&gt;getDoctrine-&gt;<span class="title function_ invoke__">getRepository</span>(<span class="title class_">Comments</span>::<span class="variable language_">class</span>)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">findLastTen</span>();</span><br><span class="line"></span><br><span class="line">  <span class="variable">$lastComments</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">renderView</span>(<span class="string">&#x27;_last_comments.html.twig&#x27;</span>,[</span><br><span class="line">    <span class="string">&#x27;comments&#x27;</span> =&gt; <span class="variable">$comments</span></span><br><span class="line">  ]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Response</span>(<span class="variable">$lastComments</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>Осталось добавить собственно запрос и повторять его.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;# comments_page.html.twig #&#125;</span><br><span class="line"></span><br><span class="line">&#123;% extends &#x27;base.html.twig&#x27; %&#125;</span><br><span class="line">&#123;% block main %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;js-last-comments&quot;</span>&gt;</span></span><br><span class="line">  &#123;% include &#x27;_last_comments.html.twig&#x27; %&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block javascripts %&#125;</span><br><span class="line">  &#123;&#123; parent() &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="built_in">setInterval</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      $.<span class="title function_">ajax</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">          <span class="attr">url</span>: <span class="string">&quot;/last-comments&quot;</span></span></span><br><span class="line"><span class="language-javascript">      &#125;).<span class="title function_">done</span>(<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          $(<span class="string">&#x27;.js-last-comments&#x27;</span>).<span class="title function_">html</span>(data);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;, <span class="number">10000</span>);</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kersonova.ru/2018/08/ajax-twig/" data-id="ck1sjzgod00007oxcpms9yfv5" class="article-share-link">Поделиться</a>
+      <a data-url="http://kersonova.ru/2018/08/ajax-twig/" data-id="clbc2rie400001ay65ei5b6iv" class="article-share-link">Поделиться</a>
       
         <a href="http://kersonova.ru/2018/08/ajax-twig/#disqus_thread" class="article-comment-link">Комментарии</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/">Ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Symfony/">Symfony</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Twig/">Twig</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ajax/" rel="tag">Ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Symfony/" rel="tag">Symfony</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Twig/" rel="tag">Twig</a></li></ul>
 
     </footer>
   </div>
@@ -169,7 +177,7 @@ ga('send', 'pageview');
 
 <section id="comments">
   <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
 </section>
 
@@ -181,7 +189,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Категории</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/День-за-днём/Обучение/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Полезное/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Работа/Рецепты/">Рецепты</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -191,7 +199,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Облако меток</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 16.67px;">Symfony</a> <a href="/tags/Twig/" style="font-size: 10px;">Twig</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/блог/" style="font-size: 13.33px;">блог</a> <a href="/tags/вопросы/" style="font-size: 10px;">вопросы</a> <a href="/tags/заметки/" style="font-size: 10px;">заметки</a> <a href="/tags/ищу-работу/" style="font-size: 10px;">ищу работу</a> <a href="/tags/учёба/" style="font-size: 10px;">учёба</a> <a href="/tags/хостинг/" style="font-size: 10px;">хостинг</a>
+      <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Symfony/" style="font-size: 16.67px;">Symfony</a> <a href="/tags/Twig/" style="font-size: 10px;">Twig</a> <a href="/tags/XDebug/" style="font-size: 10px;">XDebug</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/nginx/" style="font-size: 13.33px;">nginx</a> <a href="/tags/%D0%B1%D0%BB%D0%BE%D0%B3/" style="font-size: 16.67px;">блог</a> <a href="/tags/%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%D1%8B/" style="font-size: 10px;">вопросы</a> <a href="/tags/%D0%B7%D0%B0%D0%BC%D0%B5%D1%82%D0%BA%D0%B8/" style="font-size: 13.33px;">заметки</a> <a href="/tags/%D0%B8%D1%89%D1%83-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83/" style="font-size: 10px;">ищу работу</a> <a href="/tags/%D0%BD%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/" style="font-size: 10px;">навыки</a> <a href="/tags/%D1%83%D1%87%D1%91%D0%B1%D0%B0/" style="font-size: 10px;">учёба</a> <a href="/tags/%D1%85%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B3/" style="font-size: 10px;">хостинг</a>
     </div>
   </div>
 
@@ -200,7 +208,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Архив</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">октябрь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">январь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">август 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">декабрь 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">октябрь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">январь 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">август 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">июль 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">июнь 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">май 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">апрель 2018</a></li></ul>
     </div>
   </div>
 
@@ -211,6 +219,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Недавние записи</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/12/long-awaited-update/">Обновление и планы</a>
+          </li>
         
           <li>
             <a href="/2019/10/looking-for-a-job/">Ищу работу</a>
@@ -228,10 +240,6 @@ ga('send', 'pageview');
             <a href="/2018/08/always-progress/">Всегда учиться - учитывать реальность</a>
           </li>
         
-          <li>
-            <a href="/2018/07/fosuserbundle-symfony4/">Правильные папки для установки и конфигурации FOSUserBundle в Symfony 4</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -244,7 +252,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Мария Керсонова<br>
+      &copy; 2022 Мария Керсонова<br>
       Создано с помощью <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -256,7 +264,7 @@ ga('send', 'pageview');
   
     <a href="/archives" class="mobile-nav-link">Архив</a>
   
-    <a href="https://resume.kersonova.ru" class="mobile-nav-link">Резюме</a>
+    <a target="_blank" rel="noopener" href="https://resume.kersonova.ru" class="mobile-nav-link">Резюме</a>
   
 </nav>
     
@@ -278,11 +286,17 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 
