@@ -27,6 +27,8 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Всё устроится математически">
 <meta property="og:description" content="ЗадачаЗапустить в PhpStorm дебаг php-приложения, запущенного в docker-контейнере на том же компьютере, где работает PhpStorm.Уточняю особенно, что контейнер на той же машине, где IDE, потому что с зад">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="http://kersonova.ru/images/phpdebugserverconfig-local.png">
+<meta property="og:image" content="http://kersonova.ru/images/phpdebugconfig.png">
 <meta property="article:published_time" content="2018-06-15T07:50:34.000Z">
 <meta property="article:modified_time" content="2018-06-15T07:50:34.000Z">
 <meta property="article:author" content="Мария Керсонова">
@@ -34,6 +36,7 @@ ga('send', 'pageview');
 <meta property="article:tag" content="PhpStorm">
 <meta property="article:tag" content="XDebug">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kersonova.ru/images/phpdebugserverconfig-local.png">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -60,6 +63,10 @@ ga('send', 'pageview');
       <h1 id="logo-wrap">
         <a href="/" id="logo">Всё устроится математически</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Заметки о работе и самосовершенствовании</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -130,11 +137,17 @@ ga('send', 'pageview');
 
 <h2 id="Настройка-PhpStorm"><a href="#Настройка-PhpStorm" class="headerlink" title="Настройка PhpStorm"></a>Настройка PhpStorm</h2><p>Теперь придётся с картинками.</p>
 <h3 id="Настройка-сервера"><a href="#Настройка-сервера" class="headerlink" title="Настройка сервера"></a>Настройка сервера</h3><p>Заходим в настройки File &gt; Settings, ищем Server и добавляем новый сервер с тем же именем, которое только что указали в docker-compose. Адрес соответственно тоже ваш, порт тот же, что указан в docker-compose.<br>Указать mappings для папки public: абсолютный путь внутри контейнера &#x2F;application&#x2F;public</p>
-<figure class="left full-width">  ![Настройка сервера](/images/phpdebugserverconfig-local.png)</figure>
+<figure class="left full-width">
+
+<p>  <img src="/images/phpdebugserverconfig-local.png" alt="Настройка сервера"></p>
+  </figure>
 
 <p>Если вы указали другой (не 9000) порт в файле xdebug.ini, зайдите сразу в раздел настроек Debug и измените номер порта там.<br>Закрываем окно настроек.</p>
 <h3 id="Debug-configuration"><a href="#Debug-configuration" class="headerlink" title="Debug configuration"></a>Debug configuration</h3><p>Открываем Run &gt; Edit Configurations и добавляем новую конфигурацию для PHP Remote Debug. Имя любое, сервер выбрать из списка, а ключ тот же, что мы указывали в xdebug.ini.</p>
-<figure class="left full-width">![Настройка дебага](/images/phpdebugconfig.png)</figure>
+<figure class="left full-width">
+
+<p><img src="/images/phpdebugconfig.png" alt="Настройка дебага"></p>
+</figure>
 
 <h2 id="Запуск"><a href="#Запуск" class="headerlink" title="Запуск"></a>Запуск</h2><p>Запустим приложение. Выполнить (в корневой папке проекта)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
@@ -195,7 +208,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Категории</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
     </div>
   </div>
 

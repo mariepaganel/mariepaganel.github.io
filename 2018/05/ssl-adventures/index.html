@@ -27,6 +27,7 @@ ga('send', 'pageview');
 <meta property="og:site_name" content="Всё устроится математически">
 <meta property="og:description" content="На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог раз">
 <meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
 <meta property="article:published_time" content="2018-05-31T12:10:51.000Z">
 <meta property="article:modified_time" content="2018-05-31T12:10:51.000Z">
 <meta property="article:author" content="Мария Керсонова">
@@ -34,6 +35,7 @@ ga('send', 'pageview');
 <meta property="article:tag" content="заметки">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Всё устроится математически" type="application/atom+xml">
   
@@ -60,6 +62,10 @@ ga('send', 'pageview');
       <h1 id="logo-wrap">
         <a href="/" id="logo">Всё устроится математически</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Заметки о работе и самосовершенствовании</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -116,7 +122,8 @@ ga('send', 'pageview');
         <p>На одной неделе дважды занималась конкретно вопросами ssl-сертификатов для сайтов.<br>Во-первых, собственный блог – можете заметить, теперь “защищённое соединение”. Оказывается, GitHub Pages (где блог размещён) прямо <em>в начале этого мая</em> начали поддерживать ssl-сертификаты и перенаправление на https для других доменов. Когда я создавала блог, поддерживали только для собственных, поэтому когда я перешла на свой домен (хорошо иметь редкую фамилию))), то сначала оставалась без безопасности.<br>Чтобы получить перенаправление на https, нужно было просто убрать из настроек custom domain и после добавить назад. Сделала это несколько дней назад, как только узнала. Стоило за новостями следить, но, честное слово, мне много чего <em>стоило бы делать</em>.</p>
 <p>Во-вторых, по работе прямо сегодня возник тот же вопрос. <span id="more"></span> Заменили одно готовое решение на другое, сделанное на его основе: раньше использовали для своих внутренних проектов чистый <a target="_blank" rel="noopener" href="https://github.com/jwilder/nginx-proxy">Nginx-Proxy от @jwilder</a> (постом ниже о некотором применении для него писала), а сегодня ставила <a target="_blank" rel="noopener" href="https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion">решение от @evertramos</a> с автоматическим получением&#x2F;обновлением сертификатов Let’s Encrypt.</p>
 <figure class="left full-width">
-  ![ ](https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg)
+
+<p>  <img src="https://raw.githubusercontent.com/evertramos/images/master/webproxy.jpg" alt=" "></p>
 </figure>
 
 <p>Просто добавить -e LETSENCRYPT_HOST в файлы docker-compose существующих сервисов.<br>Случилось, что один контейнер, который уже был присоединён к сети nginx-proxy к моменту установки нового Nginx-контейнера, не получил своего сертификата. Решилось просто: убрать этот неполучивший (docker-compose down, данные во внешнем томе и это их не затронуло), перезапустить nginx, загрузить неполучивший заново (docker-compose up -d), перезагрузить nginx. Умнее было бы, наверное, выключить все нужные сервисы перед установкой новой версии. Ну хоть решилось всё быстро и без проблем.<br>Говорят, завтра будем на какой-то крутой сервер всё это ставить.</p>
@@ -172,7 +179,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Категории</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5/">Обучение</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%94%D0%B5%D0%BD%D1%8C-%D0%B7%D0%B0-%D0%B4%D0%BD%D1%91%D0%BC/">День за днём</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9D%D0%B0%D0%B2%D1%8B%D0%BA%D0%B8/">Навыки</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D0%BE%D0%B5/">Полезное</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/">Работа</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/Config/">Config</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%A0%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B/">Рецепты</a></li></ul></li></ul>
     </div>
   </div>
 
